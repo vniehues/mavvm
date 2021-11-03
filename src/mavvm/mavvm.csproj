@@ -13,4 +13,10 @@
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.18362.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <None Remove="ViewModels\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="ViewModels\" />
+	</ItemGroup>
 </Project>

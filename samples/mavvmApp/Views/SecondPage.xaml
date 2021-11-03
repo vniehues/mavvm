@@ -1,7 +1,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mavvmApp.MainPage"
+             xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels"
+             x:Class="mavvmApp.SecondPage"
              BackgroundColor="{DynamicResource SecondaryColor}">
+   
 
     <ScrollView>
         <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*"
@@ -23,19 +25,10 @@
                 HorizontalOptions="Center" />
 
             <Label 
-                Text="Current count: 0"
+                Text="{Binding Count, StringFormat='Current count: {0}'}"
                 Grid.Row="2"
                 FontSize="18"
                 FontAttributes="Bold"
-                x:Name="CounterLabel"
-                HorizontalOptions="Center" />
-
-            <Button 
-                Text="Click me"
-                FontAttributes="Bold"
-                Grid.Row="3"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
             <Image Grid.Row="4"

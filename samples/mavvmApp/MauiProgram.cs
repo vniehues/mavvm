@@ -2,6 +2,11 @@
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
+using mavvmApp.ViewModels;
+using mavvm.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using mavvmApp.Services;
+using mavvmApp.Interfaces;
 
 namespace mavvmApp
 {
@@ -15,9 +20,15 @@ namespace mavvmApp
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				});
+				})
+				.AddRoute<MainPage, MainPageViewModel>()
+				.AddRoute<SecondPage, SecondPageViewModel>();
 
-			return builder.Build();
+			builder.Services.AddSingleton<IConsoleService, ConsoleService>();
+
+			var mauiApp = builder.BuildWithContainer();
+
+			return mauiApp;
 		}
 	}
 }

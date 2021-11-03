@@ -50,6 +50,9 @@
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.26-experimental1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\mavvm\mavvm.csproj" />
+	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
