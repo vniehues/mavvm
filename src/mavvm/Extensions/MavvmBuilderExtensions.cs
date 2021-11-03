@@ -1,21 +1,21 @@
 ﻿using System;
 using mavvm.Factories;
-using mavvm.ViewModels;
+using mavvm.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
 
 namespace mavvm.Extensions
 {
-    public static class BuilderExtensions
+    public static class MavvmBuilderExtensions
     {
         public static MauiAppBuilder AddRoute<TView, TViewModel>(this MauiAppBuilder mauiApp)
             where TView : ContentPage, new()
-            where TViewModel : BaseViewModel
+            where TViewModel : BindableBase
         {
             var routeName = typeof(TViewModel).Name;
             Routing.UnRegisterRoute(routeName);
-            Routing.RegisterRoute(routeName, new ResolveRouteFactory<TView, TViewModel>());
+            Routing.RegisterRoute(routeName, new MavvmResolveRouteFactory<TView, TViewModel>());
 
             mauiApp.Services.AddTransient<TViewModel>();
 

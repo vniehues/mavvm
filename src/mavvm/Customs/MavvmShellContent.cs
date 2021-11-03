@@ -3,11 +3,11 @@ using Microsoft.Maui.Controls;
 
 namespace mavvm.Customs
 {
-    public class CustomShellContent : ShellContent
+    public class MavvmShellContent : ShellContent
     {
 
         public static readonly BindableProperty ViewModelProperty = BindableProperty.Create(nameof(ViewModel), typeof(Type),
-            typeof(CustomShellContent));
+            typeof(MavvmShellContent));
 
         public Type ViewModel
         {
@@ -15,7 +15,7 @@ namespace mavvm.Customs
             set => SetValue(ViewModelProperty, value);
         }
 
-        public CustomShellContent()
+        public MavvmShellContent()
         {
             ContentTemplate = new DataTemplate(() => Routing.GetOrCreateContent(ViewModel.Name));
         }

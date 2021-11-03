@@ -1,13 +1,13 @@
 ﻿using System;
 using mavvmApp.Interfaces;
-using mavvm.ViewModels;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
+using mavvm.Implementations;
 
 namespace mavvmApp.ViewModels
 {
     [QueryProperty(nameof(Count), "countParam")]
-    public class SecondPageViewModel : BaseViewModel
+    public class SecondPageViewModel : BindableBase
     {
         private int _count;
         public int Count

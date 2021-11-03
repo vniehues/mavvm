@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using mavvm.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace mavvm.Extensions
 {
-    public static class ShellExtensions
+    public static class MavvmShellExtensions
     {
         public static Task GoToViewModel<TViewModel>(this Shell shell, Dictionary<string, object> parameters = null)
         {

@@ -15,8 +15,10 @@
 
 	<ItemGroup>
 	  <None Remove="ViewModels\" />
+	  <None Remove="Containers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
+	  <Folder Include="Implementations\" />
+	  <Folder Include="Containers\" />
 	</ItemGroup>
 </Project>

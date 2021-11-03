@@ -2,12 +2,12 @@
 <Shell
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:mauiTest" xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels" xmlns:customs="clr-namespace:mavvm.Customs;assembly=mavvm"
+    xmlns:local="clr-namespace:mauiTest" xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels" xmlns:customs="clr-namespace:mavvm.Customs;assembly=mavvm" 
     x:Class="mavvmApp.AppShell">
     <TabBar>
         <Tab Title="Home">
-            <customs:CustomShellContent Title="Test" ViewModel="{x:Type viewmodels:MainPageViewModel}">
-            </customs:CustomShellContent>
+            <customs:MavvmShellContent Title="Test" ViewModel="{x:Type viewmodels:MainPageViewModel}">
+            </customs:MavvmShellContent>
         </Tab>
         <!--<Tab Title="Library" Icon="library.png">
             <ShellContent ContentTemplate="{DataTemplate pages:LibraryPage}"/>

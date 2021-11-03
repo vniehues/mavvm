@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using mavvm.Extensions;
-using mavvm.ViewModels;
+using mavvm;
 using Microsoft.Maui.Controls;
+using mavvm.Implementations;
 
 namespace mavvmApp.ViewModels
 {
-    public class MainPageViewModel : BaseViewModel
+    public class MainPageViewModel : BindableBase
     {
         private int _count;
         public int Count
