@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
-namespace mavvm.Extensions
+namespace mavvm
 {
     public static class MavvmShellExtensions
     {

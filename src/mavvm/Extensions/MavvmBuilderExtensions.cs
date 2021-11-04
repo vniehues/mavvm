@@ -1,11 +1,9 @@
 ﻿using System;
-using mavvm.Factories;
-using mavvm.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
 
-namespace mavvm.Extensions
+namespace mavvm
 {
     public static class MavvmBuilderExtensions
     {

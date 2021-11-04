@@ -2,7 +2,7 @@
 using mavvmApp.Interfaces;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
-using mavvm.Implementations;
+using mavvm;
 
 namespace mavvmApp.ViewModels
 {

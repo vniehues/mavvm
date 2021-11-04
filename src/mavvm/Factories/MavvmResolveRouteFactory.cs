@@ -1,9 +1,8 @@
 ﻿using System;
-using mavvm.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
-namespace mavvm.Factories
+namespace mavvm
 {
     public class MavvmResolveRouteFactory<TView, TViewModel> : RouteFactory where TView : ContentPage, new() where TViewModel : BindableBase
     {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using mavvm.Extensions;
 using mavvm;
 using Microsoft.Maui.Controls;
-using mavvm.Implementations;
 
 namespace mavvmApp.ViewModels
 {

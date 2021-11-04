@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Maui.Controls;
 
-namespace mavvm.Customs
+namespace mavvm
 {
     public class MavvmShellContent : ShellContent
     {

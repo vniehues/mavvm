@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls;
 
-namespace mavvm.Implementations
+namespace mavvm
 {
     public class BindableBase : INotifyPropertyChanged
     {

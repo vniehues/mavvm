@@ -3,10 +3,10 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using mavvmApp.ViewModels;
-using mavvm.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using mavvmApp.Services;
 using mavvmApp.Interfaces;
+using mavvm;
 
 namespace mavvmApp
 {
