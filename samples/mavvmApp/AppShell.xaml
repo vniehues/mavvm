@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Shell
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels" xmlns:mavvm="clr-namespace:mavvm;assembly=mavvm" 
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels" xmlns:mavvm="clr-namespace:mavvm;assembly=mavvm"
+    Shell.FlyoutBehavior="Disabled"
     x:Class="mavvmApp.AppShell">
-    <TabBar>
-        <Tab Title="Main">
+    <ShellItem>
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:MainPageViewModel}">
             </mavvm:MavvmShellContent>
-        </Tab>
+    </ShellItem>
+    <TabBar>
         <Tab Title="Second">
-            <mavvm:MavvmShellContent Title="Second 2" ViewModel="{x:Type viewmodels:SecondTabPageViewModel}">
+            <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondPageViewModel}">
             </mavvm:MavvmShellContent>
         </Tab>
+        <Tab Title="Second 2">
+            <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondTabPageViewModel}">
+            </mavvm:MavvmShellContent>
+            </Tab>
+    </TabBar>
+
         <!--<Tab Title="Library" Icon="library.png">
             <ShellContent ContentTemplate="{DataTemplate pages:LibraryPage}"/>
         </Tab>
         <Tab Title="Contact" Icon="contact.png">
             <ShellContent ContentTemplate="{DataTemplate pages:ContactPage}"/>
         </Tab>-->
-    </TabBar>
 </Shell>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using mavvm;
+using mavvm.Navigation;
 using Microsoft.Maui.Controls;
 
 namespace mavvmApp.ViewModels
@@ -43,9 +44,9 @@ namespace mavvmApp.ViewModels
             Count++;
         }
 
-        void Navigate()
+        async void Navigate()
         {
-            Shell.Current.GoToViewModel<SecondPageViewModel>(new Dictionary<string, object>{ { "countParam", Count } });
+            await Navigation.GoToViewModel<SecondPageViewModel>(true, new Dictionary<string, object>{ { "countParam", Count } });
         }
     }
 }

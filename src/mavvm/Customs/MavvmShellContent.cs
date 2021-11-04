@@ -5,14 +5,20 @@ namespace mavvm
 {
     public class MavvmShellContent : ShellContent
     {
-
         public static readonly BindableProperty ViewModelProperty = BindableProperty.Create(nameof(ViewModel), typeof(Type),
-            typeof(MavvmShellContent));
+            typeof(MavvmShellContent), propertyChanged: ViewModelChanged);
 
         public Type ViewModel
         {
             get => (Type)GetValue(ViewModelProperty);
             set => SetValue(ViewModelProperty, value);
+        }
+
+        static void ViewModelChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var shellcontent = bindable as MavvmShellContent;
+
+            shellcontent.Route = (newValue as Type).Name;
         }
 
         public MavvmShellContent()

@@ -11,14 +11,27 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.18362.0</SupportedOSPlatformVersion>
+		<ReleaseVersion>0.9</ReleaseVersion>
+		<SynchReleaseVersion>false</SynchReleaseVersion>
+		<PackageId>mavvm</PackageId>
+		<PackageVersion>0.9</PackageVersion>
+		<Authors>Vincent Niehues</Authors>
+		<Copyright>Vincent Niehues</Copyright>
+		<Owners>Vincent Niehues</Owners>
+		<Title>mavvm</Title>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <WarningLevel>4</WarningLevel>
+	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="ViewModels\" />
 	  <None Remove="Containers\" />
+	  <None Remove="Navigation\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Implementations\" />
 	  <Folder Include="Containers\" />
+	  <Folder Include="Navigation\" />
 	</ItemGroup>
 </Project>
