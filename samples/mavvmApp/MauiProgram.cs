@@ -3,6 +3,7 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using mavvmApp.ViewModels;
+using mavvmApp.Views;
 using Microsoft.Extensions.DependencyInjection;
 using mavvmApp.Services;
 using mavvmApp.Interfaces;
@@ -22,7 +23,8 @@ namespace mavvmApp
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				})
 				.AddRoute<MainPage, MainPageViewModel>()
-				.AddRoute<SecondPage, SecondPageViewModel>();
+				.AddRoute<SecondPage, SecondPageViewModel>()
+				.AddRoute<SecondTabPage, SecondTabPageViewModel>();
 
 			builder.Services.AddSingleton<IConsoleService, ConsoleService>();
 

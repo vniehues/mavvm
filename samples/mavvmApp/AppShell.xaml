@@ -4,8 +4,12 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels" xmlns:mavvm="clr-namespace:mavvm;assembly=mavvm" 
     x:Class="mavvmApp.AppShell">
     <TabBar>
-        <Tab Title="Home">
-            <mavvm:MavvmShellContent Title="Test" ViewModel="{x:Type viewmodels:MainPageViewModel}">
+        <Tab Title="Main">
+            <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:MainPageViewModel}">
+            </mavvm:MavvmShellContent>
+        </Tab>
+        <Tab Title="Second">
+            <mavvm:MavvmShellContent Title="Second 2" ViewModel="{x:Type viewmodels:SecondTabPageViewModel}">
             </mavvm:MavvmShellContent>
         </Tab>
         <!--<Tab Title="Library" Icon="library.png">

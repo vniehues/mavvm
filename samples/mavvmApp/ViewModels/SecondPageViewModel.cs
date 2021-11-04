@@ -9,6 +9,19 @@ namespace mavvmApp.ViewModels
     [QueryProperty(nameof(Count), "countParam")]
     public class SecondPageViewModel : BindableBase
     {
+        string _title;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                SetPropertyValue(ref _title, value);
+            }
+        }
+
         private int _count;
         public int Count
         {
@@ -22,9 +35,11 @@ namespace mavvmApp.ViewModels
 
         public SecondPageViewModel(IConsoleService consoleService)
         {
+            Title = "SecondPageViewmodel";
+
             _consoleService = consoleService;
 
-               LogCountCommand = new Command(CountUp);
+            LogCountCommand = new Command(CountUp);
         }
 
         void CountUp()

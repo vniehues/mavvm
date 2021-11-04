@@ -8,6 +8,19 @@ namespace mavvmApp.ViewModels
 {
     public class MainPageViewModel : BindableBase
     {
+        string _title;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                SetPropertyValue(ref _title, value);
+            }
+        }
+
         private int _count;
         public int Count
         {
@@ -21,6 +34,8 @@ namespace mavvmApp.ViewModels
         {
             CountUpCommand = new Command(CountUp);
             NavigateCommand = new Command(Navigate);
+
+            Title = "First Tab";
         }
 
         void CountUp()

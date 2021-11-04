@@ -2,7 +2,7 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 
-namespace mavvmApp
+namespace mavvmApp.Views
 {
 	public partial class MainPage : ContentPage
 	{
