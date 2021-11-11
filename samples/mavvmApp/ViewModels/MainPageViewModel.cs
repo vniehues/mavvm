@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using mavvm;
-using mavvm.Navigation;
 using Microsoft.Maui.Controls;
 
 namespace mavvmApp.ViewModels
