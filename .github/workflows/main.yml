@@ -17,7 +17,7 @@ jobs:
             include-prerelease: false
         
       - name: Install workload
-        run: dotnet workload install maui-windows maui-ios
+        run: dotnet workload install maui-windows maui-ios android
         
       - name: Install dependencies
         run: dotnet restore
