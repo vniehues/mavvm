@@ -16,6 +16,9 @@ jobs:
             dotnet-version: '6.x'
             include-prerelease: false
         
+      - name: Install workload
+        run: dotnet workload install maui
+        
       - name: Install dependencies
         run: dotnet restore
 
