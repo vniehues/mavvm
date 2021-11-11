@@ -1,4 +1,4 @@
-﻿#mavvm 
+# mavvm 
 [![NuGet version (mavvm)](https://img.shields.io/nuget/v/mavvm.svg?style=for-the-badge&color=green)](https://www.nuget.org/packages/mavvm/)
 
 mavvm is a framework for .NET MAUI and Shell. It allows you to use the MVVM architecture you know and love from Xamarin
