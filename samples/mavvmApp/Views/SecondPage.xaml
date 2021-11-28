@@ -32,6 +32,9 @@
                 FontAttributes="Bold"
                 HorizontalOptions="Center" />
 
+            <Button Text="Log + Alert"
+                Grid.Row="2" Command="{Binding LogCountCommand}"/>
+
             <Image Grid.Row="4"
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"

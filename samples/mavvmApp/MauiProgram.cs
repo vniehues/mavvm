@@ -28,9 +28,7 @@ namespace mavvmApp
 
 			builder.Services.AddSingleton<IConsoleService, ConsoleService>();
 
-			var mauiApp = builder.BuildWithContainer();
-
-			return mauiApp;
+			return builder.BuildWithMavvm();
 		}
 	}
 }
