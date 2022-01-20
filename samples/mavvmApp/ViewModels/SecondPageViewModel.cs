@@ -3,11 +3,12 @@ using mavvmApp.Interfaces;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
 using mavvm;
+using mavvm.Interfaces;
 
 namespace mavvmApp.ViewModels
 {
     [QueryProperty(nameof(Count), "countParam")]
-    public class SecondPageViewModel : BindableBase
+    public class SecondPageViewModel : BindableBase, IPageAware
     {
         string _title;
         public string Title
@@ -53,6 +54,16 @@ namespace mavvmApp.ViewModels
 
             var optionAlert = await BaseMethods.ShowAlert("Count", $"Count is {Count}", "Cancel", "Ok");
             _consoleService.Log(optionAlert.ToString());
+        }
+
+        public void Appearing()
+        {
+            _consoleService.Log("Appearing");
+        }
+
+        public void Disappearing()
+        {
+            _consoleService.Log("Disappearing");
         }
     }
 }
