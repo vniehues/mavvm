@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
@@ -16,7 +17,7 @@ namespace mavvm
         /// <returns></returns>
         public static MauiAppBuilder AddRoute<TView, TViewModel>(this MauiAppBuilder builder)
             where TView : ContentPage, new()
-            where TViewModel : BindableBase
+            where TViewModel : class, INotifyPropertyChanged
         {
             var routeName = typeof(TViewModel).Name;
             Routing.UnRegisterRoute(routeName);
