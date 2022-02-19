@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using mavvm;
 using Microsoft.Maui.Controls;
 
 namespace mavvmApp.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : ObservableObject
     {
         string _title;
         public string Title
@@ -17,7 +18,7 @@ namespace mavvmApp.ViewModels
             }
             set
             {
-                SetPropertyValue(ref _title, value);
+                SetProperty(ref _title, value);
             }
         }
 
@@ -25,7 +26,7 @@ namespace mavvmApp.ViewModels
         public int Count
         {
             get { return this._count; }
-            set { this.SetPropertyValue(ref this._count, value); }
+            set { this.SetProperty(ref this._count, value); }
         }
 
         public Command CountUpCommand { get; set; }

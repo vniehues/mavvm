@@ -53,6 +53,12 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\mavvm\mavvm.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="CommunityToolkit.Mvvm" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview1" />
+	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
