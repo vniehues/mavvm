@@ -46,7 +46,7 @@ namespace mavvmApp.ViewModels
 
         async void Navigate()
         {
-            await BaseMethods.GoToViewModel<SecondPageViewModel>(false, new NavigationParameters{ { "countParam", Count } });
+            await BaseMethods.GoToSection("main", new NavigationParameters{ { "countParam", Count } });
         }
     }
 }

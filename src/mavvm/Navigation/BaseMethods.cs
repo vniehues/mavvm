@@ -37,13 +37,15 @@ namespace mavvm
             }
             else
             {
-                await Shell.Current.GoToAsync(path, animate, parameters);
+                await Shell.Current.GoToAsync(path, false, parameters);
 
-                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage.BindingContext is INavigateBackToAware vm)
+                //HACK: Shell doesn'T immediately know about PresentedPage. 
+                await Task.Delay(50);
+
+                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage?.BindingContext is INavigateToAware vmTo)
                 {
-                    vm.NavigatedBackTo(parameters);
+                    vmTo.NavigatedTo(parameters);
                 }
-
             }
         }
 
