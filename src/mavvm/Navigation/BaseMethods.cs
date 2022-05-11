@@ -7,24 +7,44 @@ namespace mavvm
 {
     public static class BaseMethods
     {
-        public static Task GoBack(bool replaceStack = false, Dictionary<string, object> parameters = null)
+        public static async Task GoBack(bool replaceStack = false, NavigationParameters parameters = null, bool animate = true)
         {
             var path = (replaceStack ? "//" : "") + "..";
 
             if (parameters is null)
-                return Shell.Current.GoToAsync(path);
+            {
+                await Shell.Current.GoToAsync(path, animate);
+            }
             else
-                return Shell.Current.GoToAsync(path, parameters);
+            {
+                await Shell.Current.GoToAsync(path, animate, parameters);
+
+                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage.BindingContext is INavigateBackToAware vm)
+                {
+                    vm.NavigatedBackTo(parameters);
+                }
+
+            }
         }
 
-        public static Task GoToViewModel<TViewModel>(bool replaceStack = false, Dictionary<string, object> parameters = null)
+        public static async Task GoToViewModel<TViewModel>(bool replaceStack = false, NavigationParameters parameters = null)
         {
-            var path = (replaceStack ? "//" : "") + typeof(TViewModel).Name;
+            var vmType = typeof(TViewModel);
+            var path = (replaceStack ? "//" : "") + vmType.Name;
 
             if (parameters is null)
-                return Shell.Current.GoToAsync(path);
+            {
+                await Shell.Current.GoToAsync(path);
+            }
             else
-                return Shell.Current.GoToAsync(path, parameters);
+            {
+                await Shell.Current.GoToAsync(path, parameters);
+
+                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage.BindingContext is INavigateToAware vm)
+                {
+                    vm.NavigatedTo(parameters);
+                }
+            }
         }
 
         public static Task ShowAlert(string title, string message, string cancel)
