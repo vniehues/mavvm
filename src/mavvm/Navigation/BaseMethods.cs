@@ -27,6 +27,26 @@ namespace mavvm
             }
         }
 
+        public static async Task GoToSection(string sectionRoute, NavigationParameters parameters = null, bool animate = true)
+        {
+            var path = $"//{sectionRoute}";
+
+            if (parameters is null)
+            {
+                await Shell.Current.GoToAsync(path, animate);
+            }
+            else
+            {
+                await Shell.Current.GoToAsync(path, animate, parameters);
+
+                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage.BindingContext is INavigateBackToAware vm)
+                {
+                    vm.NavigatedBackTo(parameters);
+                }
+
+            }
+        }
+
         public static async Task GoToViewModel<TViewModel>(bool replaceStack = false, NavigationParameters parameters = null)
         {
             var vmType = typeof(TViewModel);
