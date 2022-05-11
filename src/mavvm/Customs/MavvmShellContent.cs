@@ -18,10 +18,15 @@ namespace mavvm
         {
             var shellcontent = bindable as MavvmShellContent;
 
-            shellcontent.Route = (newValue as Type).Name;
+            shellcontent.SetContentTemplate();
         }
 
         public MavvmShellContent()
+        {
+            SetContentTemplate();
+        }
+
+        void SetContentTemplate()
         {
             ContentTemplate = new DataTemplate(() => Routing.GetOrCreateContent(ViewModel.Name));
         }

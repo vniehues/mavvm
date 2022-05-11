@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using mavvm.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
