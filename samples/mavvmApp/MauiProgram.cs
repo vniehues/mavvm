@@ -25,6 +25,7 @@ namespace mavvmApp
 				.AddRoute<MainPage, MainPageViewModel>()
 				.AddRoute<SecondPage, SecondPageViewModel>()
 				.AddRoute<ThirdPage, ThirdPageViewModel>()
+				.AddRoute<LastPage, LastPageViewModel>()
 				.AddRoute<SecondTabPage, SecondTabPageViewModel>();
 
 			builder.Services.AddSingleton<IConsoleService, ConsoleService>();

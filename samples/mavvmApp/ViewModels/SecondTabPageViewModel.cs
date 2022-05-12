@@ -1,8 +1,10 @@
 ﻿using System;
 using mavvm;
+using mavvm.Attibutes;
 
 namespace mavvmApp.ViewModels
 {
+    [TabRoute("secondTabPage")]
     public class SecondTabPageViewModel : BindableBase
     {
         string _title;
