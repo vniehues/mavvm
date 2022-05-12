@@ -1,7 +1,7 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:mavvmApp.ViewModels"
-             x:Class="mavvmApp.Views.ThirdPage"
+             x:Class="mavvmApp.Views.LastPage"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource SecondaryColor}"
              Shell.PresentationMode="Animated">
@@ -35,8 +35,8 @@
             
             <Button Text="GoBack"
                 Grid.Row="3" Command="{Binding GoBackCommand}"/>
-            <Button Text="Go to ThirdPage"
-                Grid.Row="4" Command="{Binding GoToLastPageCommand}"/>
+            <Button Text="Go to SecondTab"
+                Grid.Row="4" Command="{Binding GoToSecondTabPageCommand}"/>
 
         </Grid>
     </ScrollView>

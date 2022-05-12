@@ -7,11 +7,17 @@ namespace mavvmApp.ViewModels
 	public partial class ThirdPageViewModel : BindableBase, INavigateToAware
 	{
 
-		[ICommand]
-		async void GoBack()
-		{
-			await BaseMethods.GoBack(parameters: new NavigationParameters {{"testKey1","testValue1" }});
-		}
+        [ICommand]
+        async void GoBack()
+        {
+            await BaseMethods.GoBack();
+        }
+
+        [ICommand]
+        async void GoToLastPage()
+        {
+            await BaseMethods.GoToViewModel<LastPageViewModel>(parameters: new NavigationParameters { { "testKey2", "testValue2" } });
+        }
 
         public void NavigatedTo(NavigationParameters parameters)
 		{

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using mavvm.Attibutes;
 using Microsoft.Maui.Controls;
 
 namespace mavvm
@@ -19,6 +22,19 @@ namespace mavvm
             var shellcontent = bindable as MavvmShellContent;
 
             shellcontent.SetContentTemplate();
+        }
+
+        protected override void OnParentSet()
+        {
+            base.OnParentSet();
+
+            var tab = this.Parent as Tab;
+            if (tab is null) return;
+
+            var attrib = ViewModel.GetCustomAttribute<TabRouteAttribute>();
+            if (attrib is null) return;
+
+            tab.Route = attrib.TabRoute;
         }
 
         public MavvmShellContent()

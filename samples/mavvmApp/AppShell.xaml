@@ -5,21 +5,21 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     
     x:Class="mavvmApp.AppShell">
     <ShellItem Route="start">
-            <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:MainPageViewModel}">
-            </mavvm:MavvmShellContent>
+        <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:MainPageViewModel}">
+        </mavvm:MavvmShellContent>
     </ShellItem>
-    <TabBar Route="main">
-        <Tab Title="Second" Route="firstTab">
-            <mavvm:MavvmShellContent Title="MainPageTitle" ViewModel="{x:Type viewmodels:SecondPageViewModel}">
+    <TabBar x:Name="MainTabbar" Route="main">
+        <Tab>
+            <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondPageViewModel}">
             </mavvm:MavvmShellContent>
         </Tab>
-        <Tab Title="Second 2" Route="secondTab">
+        <Tab>
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondTabPageViewModel}">
             </mavvm:MavvmShellContent>
-            </Tab>
+        </Tab>
     </TabBar>
 
-        <!--<Tab Title="Library" Icon="library.png">
+    <!--<Tab Title="Library" Icon="library.png">
             <ShellContent ContentTemplate="{DataTemplate pages:LibraryPage}"/>
         </Tab>
         <Tab Title="Contact" Icon="contact.png">

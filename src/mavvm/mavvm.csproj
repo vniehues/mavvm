@@ -31,12 +31,14 @@ It uses the Shell we all know from xamarin together with the all new .net maui w
 	  <None Remove="Interfaces\" />
 	  <None Remove="Microsoft.Maui.Dependencies" />
 	  <None Remove="Microsoft.Maui.Extensions" />
+	  <None Remove="Attibutes\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Implementations\" />
 	  <Folder Include="Containers\" />
 	  <Folder Include="Navigation\" />
 	  <Folder Include="Interfaces\" />
+	  <Folder Include="Attibutes\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.300-rc.3.5667" />
