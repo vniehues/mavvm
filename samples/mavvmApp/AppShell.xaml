@@ -9,14 +9,10 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         </mavvm:MavvmShellContent>
     </ShellItem>
     <TabBar x:Name="MainTabbar" Route="main">
-        <Tab>
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondPageViewModel}">
             </mavvm:MavvmShellContent>
-        </Tab>
-        <Tab>
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondTabPageViewModel}">
             </mavvm:MavvmShellContent>
-        </Tab>
     </TabBar>
 
     <!--<Tab Title="Library" Icon="library.png">

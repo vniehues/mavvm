@@ -13,7 +13,7 @@ namespace mavvmApp.ViewModels
         [ICommand]
         async void GoBack()
         {
-            await BaseMethods.GoBack();
+            await BaseMethods.GoToViewModel<MainPageViewModel>();
         }
 
         [ICommand]
@@ -70,12 +70,12 @@ namespace mavvmApp.ViewModels
 
         public void Appearing()
         {
-            _consoleService.Log("Appearing");
+            _consoleService.Log("SecondPage Appearing");
         }
 
         public void Disappearing()
         {
-            _consoleService.Log("Disappearing");
+            _consoleService.Log("SecondPage Disappearing");
         }
 
         public void NavigatedBackTo(NavigationParameters parameters)
