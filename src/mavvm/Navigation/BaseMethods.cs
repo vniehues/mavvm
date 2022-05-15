@@ -30,59 +30,6 @@ namespace mavvm
             }
         }
 
-        public static async Task GoToSection(string sectionRoute, NavigationParameters parameters = null, bool animate = true)
-        {
-            var path = $"//{sectionRoute}";
-
-            if (parameters is null)
-            {
-                await Shell.Current.GoToAsync(path, animate);
-            }
-            else
-            {
-                await Shell.Current.GoToAsync(path, false, parameters);
-
-                //HACK: Shell doesn't immediately know about PresentedPage. 
-                await Task.Delay(50);
-
-                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage?.BindingContext is INavigateToAware vmTo)
-                {
-                    vmTo.NavigatedTo(parameters);
-                }
-            }
-        }
-
-        public static async Task GoToSection<TViewModel>(string sectionRoute, NavigationParameters parameters = null, bool animate = true)
-        {
-            var vmType = typeof(TViewModel);
-
-            var path = $"//{sectionRoute}";
-
-            if (parameters is null)
-            {
-                await Shell.Current.GoToAsync(path, animate);
-
-                //HACK: Shell doesn't immediately know about PresentedPage. 
-                await Task.Delay(50);
-
-                SelectCorrectTab(vmType);
-            }
-            else
-            {
-                await Shell.Current.GoToAsync(path, false, parameters);
-
-                //HACK: Shell doesn't immediately know about PresentedPage. 
-                await Task.Delay(50);
-
-                SelectCorrectTab(vmType);
-
-                if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage?.BindingContext is INavigateToAware vmTo)
-                {
-                    vmTo.NavigatedTo(parameters);
-                }
-            }
-        }
-
         public static async Task GoToViewModel<TViewModel>(bool replaceStack = false, NavigationParameters parameters = null)
         {
             var vmType = typeof(TViewModel);
@@ -90,7 +37,10 @@ namespace mavvm
 
             SelectCorrectTab(vmType);
 
-            if (Shell.Current.CurrentPage.BindingContext.GetType() != vmType)
+            //HACK: Shell doesn't immediately know about CurrentPage. 
+            await Task.Delay(50);
+
+            if (Shell.Current?.CurrentPage?.BindingContext?.GetType() != vmType)
             {
                 if (parameters is null)
                 {
@@ -102,7 +52,7 @@ namespace mavvm
                 }
             }
 
-            if ((Shell.Current?.CurrentItem?.CurrentItem as IShellSectionController)?.PresentedPage.BindingContext is INavigateToAware vm)
+            if (Shell.Current?.CurrentPage?.BindingContext is INavigateToAware vm)
             {
                 vm.NavigatedTo(parameters);
             }
@@ -111,18 +61,26 @@ namespace mavvm
         static void SelectCorrectTab(Type viewModelType)
         {
             if (Application.Current?.MainPage is IShellWithTabBar shell)
-            {
-                var attrib = viewModelType.GetCustomAttribute<TabRouteAttribute>();
-                if (attrib is null) return;
-
+            {              
                 var tabItem = shell
                     .TabBar?
                     .Items
-                    .FirstOrDefault(x => x.Route == attrib.TabRoute);
+                    .FirstOrDefault(x => x.Route == viewModelType.Name + "Tab");
 
                 if (tabItem is object)
                 {
                     shell.TabBar.CurrentItem = tabItem;
+                }
+            }
+
+            var sectionAttribute = viewModelType.GetCustomAttribute<SectionRouteAttribute>();
+            if (sectionAttribute is object)
+            {
+                var sectionItem = Shell.Current.Items.FirstOrDefault(x => x.Route == sectionAttribute.SectionRoute);
+
+                if (sectionItem is object)
+                {
+                    Shell.Current.CurrentItem = sectionItem;
                 }
             }
         }

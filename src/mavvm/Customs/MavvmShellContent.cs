@@ -28,13 +28,11 @@ namespace mavvm
         {
             base.OnParentSet();
 
-            var tab = this.Parent as Tab;
-            if (tab is null) return;
-
-            var attrib = ViewModel.GetCustomAttribute<TabRouteAttribute>();
-            if (attrib is null) return;
-
-            tab.Route = attrib.TabRoute;
+            if (this.Parent is ShellSection tab)
+            {
+                if (tab is null) return;
+                tab.Route = ViewModel.Name + "Tab";
+            }
         }
 
         public MavvmShellContent()

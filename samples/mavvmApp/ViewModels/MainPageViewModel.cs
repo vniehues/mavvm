@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using mavvm;
+using mavvm.Attibutes;
 using Microsoft.Maui.Controls;
 
 namespace mavvmApp.ViewModels
 {
+    [SectionRoute("start")]
     public class MainPageViewModel : ObservableObject
     {
         string _title;
@@ -46,7 +48,7 @@ namespace mavvmApp.ViewModels
 
         async void Navigate()
         {
-            await BaseMethods.GoToSection<SecondTabPageViewModel>("main",parameters: new NavigationParameters{ { "countParam", Count } });
+            await BaseMethods.GoToViewModel<SecondTabPageViewModel>(parameters: new NavigationParameters{ { "countParam", Count } });
         }
     }
 }
