@@ -4,7 +4,7 @@
              x:Class="mavvmApp.Views.LastPage"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource SecondaryColor}"
-             Shell.PresentationMode="Animated">
+             Shell.PresentationMode="ModalAnimated">
    
 
     <ScrollView>

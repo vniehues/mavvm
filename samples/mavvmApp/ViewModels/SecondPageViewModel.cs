@@ -4,9 +4,11 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
 using mavvm;
 using CommunityToolkit.Mvvm.Input;
+using mavvm.Attibutes;
 
 namespace mavvmApp.ViewModels
 {
+    [SectionRoute("main")]
     [QueryProperty(nameof(Count), "countParam")]
     public partial class SecondPageViewModel : BindableBase, IPageAware, INavigationAware
     {
