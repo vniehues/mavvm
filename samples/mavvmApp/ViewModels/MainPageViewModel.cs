@@ -48,7 +48,7 @@ namespace mavvmApp.ViewModels
 
         async void Navigate()
         {
-            await BaseMethods.GoToViewModel<SecondTabPageViewModel>(parameters: new NavigationParameters{ { "countParam", Count } });
+            await BaseMethods.GoToViewModel<LastPageViewModel>(intermediates: new []{typeof(SecondPageViewModel), typeof(ThirdPageViewModel)}, new NavigationParameters{ { "countParam", Count } });
         }
     }
 }

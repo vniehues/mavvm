@@ -30,12 +30,111 @@ namespace mavvm
             }
         }
 
-        public static async Task GoToViewModel<TViewModel>(bool replaceStack = false, NavigationParameters parameters = null)
+        public static async Task GoToViewModel<TViewModel>(bool replaceStack, NavigationParameters parameters = null)
         {
             var vmType = typeof(TViewModel);
             var path = (replaceStack ? "//" : "") + vmType.Name;
 
             SelectCorrectTab(vmType);
+
+            //HACK: Shell doesn't immediately know about CurrentPage. 
+            await Task.Delay(50);
+
+            if (Shell.Current?.CurrentPage?.BindingContext?.GetType() != vmType)
+            {
+                if (parameters is null)
+                {
+                    await Shell.Current.GoToAsync(path);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync(path, parameters);
+                }
+            }
+
+            if (Shell.Current?.CurrentPage?.BindingContext is INavigateToAware vm)
+            {
+                vm.NavigatedTo(parameters);
+            }
+        }
+
+        public static async Task GoToViewModel<TViewModel>(NavigationParameters parameters = null)
+        {
+            var vmType = typeof(TViewModel);
+            var path = vmType.Name;
+
+            SelectCorrectTab(vmType);
+
+            //HACK: Shell doesn't immediately know about CurrentPage. 
+            await Task.Delay(50);
+
+            if (Shell.Current?.CurrentPage?.BindingContext?.GetType() != vmType)
+            {
+                if (parameters is null)
+                {
+                    await Shell.Current.GoToAsync(path);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync(path, parameters);
+                }
+            }
+
+            if (Shell.Current?.CurrentPage?.BindingContext is INavigateToAware vm)
+            {
+                vm.NavigatedTo(parameters);
+            }
+        }
+
+        public static async Task GoToViewModel<TViewModel>(Type[] intermediates, NavigationParameters parameters = null)
+        {
+            var vmType = typeof(TViewModel);
+
+            var path = "";
+
+            foreach (var vmStep in intermediates)
+            {
+                path += $"{vmStep.Name}/";
+            }
+            
+            path += vmType.Name;
+
+            SelectCorrectTab(intermediates.Length > 0 ? intermediates[0] : vmType);
+
+            //HACK: Shell doesn't immediately know about CurrentPage. 
+            await Task.Delay(50);
+
+            if (Shell.Current?.CurrentPage?.BindingContext?.GetType() != vmType)
+            {
+                if (parameters is null)
+                {
+                    await Shell.Current.GoToAsync(path);
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync(path, parameters);
+                }
+            }
+
+            if (Shell.Current?.CurrentPage?.BindingContext is INavigateToAware vm)
+            {
+                vm.NavigatedTo(parameters);
+            }
+        }
+        public static async Task GoToViewModel<TViewModel>(Type intermediate, NavigationParameters parameters = null)
+        {
+            var vmType = typeof(TViewModel);
+
+            var path = "";
+
+            if (intermediate is not null)
+            {
+                path += $"{intermediate.Name}/";
+            }
+            
+            path += vmType.Name;
+
+            SelectCorrectTab(intermediate ?? vmType);
 
             //HACK: Shell doesn't immediately know about CurrentPage. 
             await Task.Delay(50);
