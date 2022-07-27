@@ -12,7 +12,7 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.18362.0</SupportedOSPlatformVersion>
 		<PackageId>mavvm</PackageId>
-		<PackageVersion>1.0.5</PackageVersion>
+		<PackageVersion>1.0.6</PackageVersion>
 		<Authors>Vincent Niehues</Authors>
 		<Copyright>Vincent Niehues 2021</Copyright>
 		<Owners>Vincent Niehues</Owners>
