@@ -3,13 +3,27 @@ using mavvmApp.Interfaces;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Hosting;
 using mavvm;
-using mavvm.Interfaces;
+using CommunityToolkit.Mvvm.Input;
+using mavvm.Attibutes;
 
 namespace mavvmApp.ViewModels
 {
+    [SectionRoute("main")]
     [QueryProperty(nameof(Count), "countParam")]
-    public class SecondPageViewModel : BindableBase, IPageAware
+    public partial class SecondPageViewModel : BindableBase, IPageAware, INavigationAware
     {
+        [ICommand]
+        async void GoBack()
+        {
+            await BaseMethods.GoToViewModel<MainPageViewModel>();
+        }
+
+        [ICommand]
+        async void GoToThirdPage()
+        {
+            await BaseMethods.GoToViewModel<ThirdPageViewModel>(parameters: new NavigationParameters { { "testKey2", "testValue2" } });
+        }
+
         string _title;
         public string Title
         {
@@ -58,12 +72,22 @@ namespace mavvmApp.ViewModels
 
         public void Appearing()
         {
-            _consoleService.Log("Appearing");
+            _consoleService.Log("SecondPage Appearing");
         }
 
         public void Disappearing()
         {
-            _consoleService.Log("Disappearing");
+            _consoleService.Log("SecondPage Disappearing");
+        }
+
+        public void NavigatedBackTo(NavigationParameters parameters)
+        {
+            Console.WriteLine(parameters);
+        }
+
+        public void NavigatedTo(NavigationParameters parameters)
+        {
+            Console.WriteLine(parameters);
         }
     }
 }

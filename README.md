@@ -20,7 +20,13 @@ As you can see from the tables below, the configuration is minimal.
 1. ShellContent does not need a route property anymore. It only needs the corresponding ViewModel and will create the Route and BindingContext by itself.
 2. In `MauiProgram.cs` you need to change `builder.Build();` to `builder.BuildWithContainer();` to make sure that the container is registered and can be used by mavvm.
 3. Also in `MauiProgram.cs` you need to add every Page in your App with the corresponding ViewModel using the `.AddRoute<TView, TViewModel>()` extension.
+4. When your AppShell contains a tabbar you should add a route to the tabbar and register said route in your ViewModel with a custom attribute like this: 
+```
+    [SectionRoute("start")]
+    public class MainPageViewModel : ObservableObject 
+```
 
+	    
 
 
 
@@ -58,7 +64,7 @@ As you can see from the tables below, the configuration is minimal.
     </TabBar>
 </Shell>
 ```
-
+	
 </td>
     <td>
 
@@ -72,11 +78,11 @@ As you can see from the tables below, the configuration is minimal.
     Shell.FlyoutBehavior="Disabled"
     x:Class="mavvmApp.AppShell">
     
-    <ShellItem>
+    <ShellItem Route="start">
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:MainPageViewModel}">
             </mavvm:MavvmShellContent>
     </ShellItem>
-    <TabBar>
+    <TabBar Route="main">
         <Tab Title="Second">
             <mavvm:MavvmShellContent ViewModel="{x:Type viewmodels:SecondPageViewModel}">
             </mavvm:MavvmShellContent>

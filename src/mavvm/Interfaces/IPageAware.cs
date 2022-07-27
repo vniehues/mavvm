@@ -1,5 +1,5 @@
 ﻿using System;
-namespace mavvm.Interfaces
+namespace mavvm
 {
 	public interface IPageAware
 	{

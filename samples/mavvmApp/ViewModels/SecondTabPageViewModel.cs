@@ -1,9 +1,11 @@
 ﻿using System;
 using mavvm;
+using mavvm.Attibutes;
 
 namespace mavvmApp.ViewModels
 {
-    public class SecondTabPageViewModel : BindableBase
+    [SectionRoute("main")]
+    public class SecondTabPageViewModel : BindableBase, INavigationAware
     {
         string _title;
         public string Title
@@ -21,6 +23,14 @@ namespace mavvmApp.ViewModels
         public SecondTabPageViewModel()
         {
             Title = "Second Tab";
+        }
+
+        public void NavigatedTo(NavigationParameters parameters)
+        {
+        }
+
+        public void NavigatedBackTo(NavigationParameters parameters)
+        {
         }
     }
 }

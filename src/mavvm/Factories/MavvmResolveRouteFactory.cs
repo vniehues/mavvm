@@ -1,11 +1,11 @@
 ﻿using System;
-using mavvm.Interfaces;
+using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
 namespace mavvm
 {
-    public class MavvmResolveRouteFactory<TView, TViewModel> : RouteFactory where TView : ContentPage, new() where TViewModel : BindableBase
+    public class MavvmResolveRouteFactory<TView, TViewModel> : RouteFactory where TView : ContentPage, new() where TViewModel : class, INotifyPropertyChanged
     {
 
         public override Element GetOrCreate(IServiceProvider services)

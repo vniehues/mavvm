@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using mavvm;
+using mavvm.Attibutes;
 using Microsoft.Maui.Controls;
 
 namespace mavvmApp.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    [SectionRoute("start")]
+    public class MainPageViewModel : ObservableObject
     {
         string _title;
         public string Title
@@ -17,7 +20,7 @@ namespace mavvmApp.ViewModels
             }
             set
             {
-                SetPropertyValue(ref _title, value);
+                SetProperty(ref _title, value);
             }
         }
 
@@ -25,7 +28,7 @@ namespace mavvmApp.ViewModels
         public int Count
         {
             get { return this._count; }
-            set { this.SetPropertyValue(ref this._count, value); }
+            set { this.SetProperty(ref this._count, value); }
         }
 
         public Command CountUpCommand { get; set; }
@@ -45,7 +48,7 @@ namespace mavvmApp.ViewModels
 
         async void Navigate()
         {
-            await BaseMethods.GoToViewModel<SecondPageViewModel>(true, new Dictionary<string, object>{ { "countParam", Count } });
+            await BaseMethods.GoToViewModel<LastPageViewModel>(intermediates: new []{typeof(SecondPageViewModel), typeof(ThirdPageViewModel)}, new NavigationParameters{ { "countParam", Count } });
         }
     }
 }

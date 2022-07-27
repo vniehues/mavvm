@@ -4,9 +4,9 @@ using Microsoft.Maui.Controls;
 
 namespace mavvmApp.Views
 { 
-	public partial class SecondPage : ContentPage
+	public partial class ThirdPage : ContentPage
 	{
-		public SecondPage()
+		public ThirdPage()
 		{
 			InitializeComponent();
 		}
