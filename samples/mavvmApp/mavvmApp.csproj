@@ -55,13 +55,9 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="CommunityToolkit.Mvvm" />
-	  <None Remove="Microsoft.Maui.Dependencies" />
-	  <None Remove="Microsoft.Maui.Extensions" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
-	  <PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.312" />
-	  <PackageReference Include="Microsoft.Maui.Extensions" Version="6.0.312" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Views\SecondPage %28Kopie%29.xaml">
